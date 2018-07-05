@@ -3,7 +3,7 @@ export class User {
   username: string
   password: string
   avatarPath: string
-  role: UserRole
+  role: UserRole = UserRole.USER
 }
 
 export class UserVO extends User {
@@ -41,6 +41,14 @@ export class UserRegisterDTO extends User {
     super()
     this.username = user.username
     this.password = user.password
+  }
+}
+
+export class UserUpdateDTO extends User {
+  readonly avatarPath: string
+  constructor(user: User) {
+    super()
+    this.avatarPath = user.avatarPath
   }
 }
 

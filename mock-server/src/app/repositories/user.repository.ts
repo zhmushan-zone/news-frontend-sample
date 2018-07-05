@@ -34,4 +34,33 @@ export class UserRepository {
     }
     return
   }
+
+  static save(user: User) {
+    users.push(user)
+  }
+
+  static deleteById(id: string) {
+    for (const key in users) {
+      if (users.hasOwnProperty(key)) {
+        const user = users[key]
+        if (user.id === id) {
+          users.splice(Number.parseInt(key), 1)
+          return true
+        }
+      }
+    }
+    return false
+  }
+
+  static updateById(id: string, user: User) {
+    for (const key in users) {
+      if (users.hasOwnProperty(key)) {
+        if (users[key].id === id) {
+          users[key] = { ...users[key], ...user }
+          return users[key]
+        }
+      }
+    }
+    return
+  }
 }

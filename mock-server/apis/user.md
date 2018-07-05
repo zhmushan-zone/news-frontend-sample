@@ -88,7 +88,6 @@ GET /api/user/:id
   "code": 102,
   "msg": "NOT_EXISIT"
 }
-}
 ```
 ## FindAll
 ```
@@ -106,5 +105,70 @@ GET /api/user
     "avatarPath": "avatarPath",
     "role": 0
   }]
+}
+```
+## Delete
+> role: ADMIN
+```
+DELETE /api/user/:id
+```
+
+headers
+```
+{
+  "token": "token"
+}
+```
+
+返回
+```
+{
+  "code": "1",
+  "msg": "SUCCESS"
+}
+```
+```
+{
+  "code": 102,
+  "msg": "NOT_EXISIT"
+}
+```
+## Update
+> role: USER
+```
+PUT /api/user
+```
+
+headers
+```
+{
+  "token": "token"
+}
+```
+
+参数
+```
+{
+  "avatarPath": "avatarPath"
+}
+```
+
+返回
+```
+{
+  "code": "1",
+  "msg": "SUCCESS",
+  "data": {
+    "id": "id",
+    "username": "username",
+    "avatarPath": "avatarPath",
+    "role": 0
+  }
+}
+```
+```
+{
+  "code": 102,
+  "msg": "NOT_EXISIT"
 }
 ```
