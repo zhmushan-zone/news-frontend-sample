@@ -1,0 +1,12 @@
+[
+  {
+    "username": "zhb",
+    "password": "vhhsbn",
+    "role": 1
+  },
+  {
+    "username": "user",
+    "password": "pass",
+    "role": 0
+  }
+]

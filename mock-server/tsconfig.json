@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "target": "esnext",
+      "module": "commonjs",
+      "skipDefaultLibCheck": true,
+      "skipLibCheck": true,
+      "sourceMap": false,
+      "lib": [
+        "esnext"
+      ],
+      "baseUrl": "./src",
+      "rootDir": "./src",
+      "outDir": "./dist"
+    }
+  }
