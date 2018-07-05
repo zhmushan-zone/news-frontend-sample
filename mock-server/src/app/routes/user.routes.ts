@@ -5,3 +5,5 @@ export const userRouter = new koaRouter({ prefix: '/user' })
 userRouter
   .post('/login', UserController.login)
   .post('/register', UserController.register)
+  .get('/:id', UserController.findById)
+  .get('/', UserController.findAll)

@@ -25,4 +25,19 @@ export class UserController {
     }
     ctx.body = response(ResponseCode.EXISIT)
   }
+
+  static findById(ctx: Context) {
+    const { id } = ctx.params
+
+    const user = UserRepository.findById(id)
+    if (user) {
+      ctx.body = success(new UserVO(user))
+      return
+    }
+    ctx.body = response(ResponseCode.NOT_EXISIT)
+  }
+
+  static findAll(ctx: Context) {
+    ctx.body = success(UserRepository.find().map(user => new UserVO(user)))
+  }
 }

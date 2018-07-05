@@ -5,7 +5,16 @@ const users: User[] = usersData
 export class UserRepository {
 
   static find() {
-    return users
+    return users || []
+  }
+
+  static findById(id: string) {
+    for (const user of users) {
+      if (user.id === id) {
+        return user
+      }
+    }
+    return
   }
 
   static findByUsernameAndPassword(username: string, password: string) {

@@ -17,7 +17,9 @@ POST /api/user/login
   "code": "1",
   "msg": "SUCCESS",
   "data": {
+    "id": "id",
     "username": "username",
+    "avatarPath": "avatarPath",
     "role": 0,
     "token": "token"
   }
@@ -49,7 +51,9 @@ POST /api/user/register
   "code": "1",
   "msg": "SUCCESS",
   "data": {
+    "id": "id",
     "username": "username",
+    "avatarPath": "avatarPath",
     "role": 0,
     "token": "token"
   }
@@ -59,5 +63,48 @@ POST /api/user/register
 {
   "code": 101,
   "msg": "EXISIT"
+}
+```
+## FindById
+```
+GET /api/user/:id
+```
+
+返回
+```
+{
+  "code": "1",
+  "msg": "SUCCESS",
+  "data": {
+    "id": "id",
+    "username": "username",
+    "avatarPath": "avatarPath",
+    "role": 0
+  }
+}
+```
+```
+{
+  "code": 102,
+  "msg": "NOT_EXISIT"
+}
+}
+```
+## FindAll
+```
+GET /api/user
+```
+
+返回
+```
+{
+  "code": "1",
+  "msg": "SUCCESS",
+  "data": [{
+    "id": "id",
+    "username": "username",
+    "avatarPath": "avatarPath",
+    "role": 0
+  }]
 }
 ```

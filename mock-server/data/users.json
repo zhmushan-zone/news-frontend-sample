@@ -1,12 +1,16 @@
 [
   {
+    "id": "user1",
     "username": "zhb",
     "password": "vhhsbn",
+    "avatarPath": "/images/1.jpeg",
     "role": 1
   },
   {
+    "id": "user2",
     "username": "user",
     "password": "pass",
+    "avatarPath": "/images/2.png",
     "role": 0
   }
 ]

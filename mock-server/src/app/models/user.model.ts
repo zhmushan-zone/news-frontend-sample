@@ -1,16 +1,22 @@
 export class User {
+  id: string
   username: string
   password: string
+  avatarPath: string
   role: UserRole
 }
 
 export class UserVO extends User {
+  id: string
   username: string
+  avatarPath: string
   role: UserRole
   token: string
   constructor(user: User, token?: string) {
     super()
+    this.id = user.id
     this.username = user.username
+    this.avatarPath = user.avatarPath
     this.role = user.role
     if (token) {
       this.token = token
