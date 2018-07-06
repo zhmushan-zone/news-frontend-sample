@@ -1,0 +1,11 @@
+@import './styles/icons';
+
+body, p, ul { margin: 0; padding: 0; }
+a { text-decoration: none; color: inherit; }
+ul { list-style-type: none }
+
+body {
+    font-family: 'Product Sans',Arial,sans-serif;
+}
+
+@import './styles/theme';
