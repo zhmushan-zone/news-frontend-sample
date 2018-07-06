@@ -4,11 +4,20 @@ export interface User {
   password: string;
   avatarPath: string;
   role: UserRole;
+  sex: UserSex;
+  age: number;
+  updateAt: Date;
+  createAt: Date;
   token: string;
 }
 
 export const enum UserRole {
-  USER,
+  SUPER,
   ADMIN,
-  SUPER
+  USER
+}
+
+export const enum UserSex {
+  MALE,
+  FEMALE
 }
