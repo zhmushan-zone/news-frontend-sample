@@ -1,0 +1,17 @@
+mat-card {
+  min-height: 128px;
+  background: url('/assets/images/nav_cover.jpg') 0 / cover;
+}
+
+mat-nav-list {
+  min-width: 272px;
+}
+
+.avatar {
+  background: url('/assets/images/default_avatar.png') 0 / cover
+}
+
+.hint {
+  color: #ccc;
+  margin-left: 16px;
+}

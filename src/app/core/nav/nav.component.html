@@ -1,0 +1,11 @@
+<mat-card class="mat-elevation-z0">
+  <button mat-fab class="avatar" (click)="linkClick.emit(navMode.login)"></button>
+  <span class="hint">点击头像登录</span>
+</mat-card>
+<mat-nav-list>
+  <a *ngFor="let menu of menus"
+    mat-list-item
+    (click)="linkClick.emit(navMode.nav)">
+    {{ menu.title }}
+  </a>
+</mat-nav-list>
