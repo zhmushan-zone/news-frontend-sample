@@ -4,6 +4,10 @@ export class User {
   password: string
   avatarPath: string
   role: UserRole = UserRole.USER
+  sex: UserSex = UserSex.MALE
+  age: number
+  updateAt: Date
+  createAt: Date
 }
 
 export class UserVO extends User {
@@ -11,6 +15,8 @@ export class UserVO extends User {
   username: string
   avatarPath: string
   role: UserRole
+  updateAt: Date
+  createAt: Date
   token: string
   constructor(user: User, token?: string) {
     super()
@@ -18,6 +24,10 @@ export class UserVO extends User {
     this.username = user.username
     this.avatarPath = user.avatarPath
     this.role = user.role
+    this.sex = user.sex
+    this.age = user.age
+    this.updateAt = user.updateAt
+    this.createAt = user.createAt
     if (token) {
       this.token = token
     }
@@ -53,6 +63,12 @@ export class UserUpdateDTO extends User {
 }
 
 export const enum UserRole {
-  USER,
-  ADMIN
+  SUPER,
+  ADMIN,
+  USER
+}
+
+export const enum UserSex {
+  MALE,
+  FEMALE
 }

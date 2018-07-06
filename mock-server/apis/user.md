@@ -21,6 +21,10 @@ POST /api/user/login
     "username": "username",
     "avatarPath": "avatarPath",
     "role": 0,
+    "sex": 0,
+    "age": 0,
+    "updateAt": Date,
+    "createAt": Date,
     "token": "token"
   }
 }
@@ -55,6 +59,10 @@ POST /api/user/register
     "username": "username",
     "avatarPath": "avatarPath",
     "role": 0,
+    "sex": 0,
+    "age": 0,
+    "updateAt": Date,
+    "createAt": Date,
     "token": "token"
   }
 }
@@ -79,7 +87,11 @@ GET /api/user/:id
     "id": "id",
     "username": "username",
     "avatarPath": "avatarPath",
-    "role": 0
+    "role": 0,
+    "sex": 0,
+    "age": 0,
+    "updateAt": Date,
+    "createAt": Date
   }
 }
 ```
@@ -103,12 +115,15 @@ GET /api/user
     "id": "id",
     "username": "username",
     "avatarPath": "avatarPath",
-    "role": 0
+    "role": 0,
+    "sex": 0,
+    "age": 0,
+    "updateAt": Date,
+    "createAt": Date
   }]
 }
 ```
 ## Delete
-> role: ADMIN
 ```
 DELETE /api/user/:id
 ```
@@ -134,7 +149,6 @@ headers
 }
 ```
 ## Update
-> role: USER
 ```
 PUT /api/user
 ```
@@ -149,7 +163,12 @@ headers
 参数
 ```
 {
-  "avatarPath": "avatarPath"
+  "username": "username",
+  "password": "password",
+  "avatarPath": "avatarPath",
+  "role": 0,
+  "sex": 0,
+  "age": 0
 }
 ```
 
@@ -162,7 +181,11 @@ headers
     "id": "id",
     "username": "username",
     "avatarPath": "avatarPath",
-    "role": 0
+    "role": 0,
+    "sex": 0,
+    "age": 0,
+    "updateAt": Date,
+    "createAt": Date,
   }
 }
 ```

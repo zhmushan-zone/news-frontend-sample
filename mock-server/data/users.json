@@ -4,13 +4,26 @@
     "username": "zhb",
     "password": "vhhsbn",
     "avatarPath": "/images/1.jpeg",
-    "role": 1
+    "role": 1,
+    "sex": 0,
+    "age": 0
   },
   {
     "id": "user2",
     "username": "user",
     "password": "pass",
     "avatarPath": "/images/2.png",
-    "role": 0
+    "role": 2,
+    "sex": 0,
+    "age": 0
+  },
+  {
+    "id": "user3",
+    "username": "admin",
+    "password": "admin",
+    "avatarPath": "/images/2.png",
+    "role": 0,
+    "sex": 0,
+    "age": 0
   }
 ]
