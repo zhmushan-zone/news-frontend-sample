@@ -10,3 +10,4 @@ userRouter
   .get('/', UserController.findAll)
   .del('/:id', validateTokenMiddleware, UserController.delete)
   .put('/', validateTokenMiddleware, UserController.update)
+  .get('/auth', validateTokenMiddleware, UserController.auth)

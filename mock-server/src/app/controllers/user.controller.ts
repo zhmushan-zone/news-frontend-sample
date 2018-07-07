@@ -64,4 +64,14 @@ export class UserController {
     }
     ctx.body = response(ResponseCode.NOT_EXISIT)
   }
+
+  static auth(ctx: Context) {
+    const user = ctx.state.user as User
+
+    if (user) {
+      ctx.body = success(new UserVO(user, createToken(user)))
+      return
+    }
+    ctx.body = response(ResponseCode.TOKEN_EXPIRED)
+  }
 }

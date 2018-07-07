@@ -73,6 +73,42 @@ POST /api/user/register
   "msg": "EXISIT"
 }
 ```
+## Auth
+```
+GET /api/user/auth
+```
+
+headers
+```
+{
+  "token": "token"
+}
+```
+
+返回
+```
+{
+  "code": "1",
+  "msg": "SUCCESS",
+  "data": {
+    "id": "id",
+    "username": "username",
+    "avatarPath": "avatarPath",
+    "role": 0,
+    "sex": 0,
+    "age": 0,
+    "updateAt": Date,
+    "createAt": Date,
+    "token": "token"
+  }
+}
+```
+```
+{
+  "code": 103,
+  "msg": "TOKEN_EXPIRED"
+}
+```
 ## FindById
 ```
 GET /api/user/:id

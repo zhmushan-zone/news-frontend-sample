@@ -3,7 +3,8 @@ export enum ResponseCode {
   SUCCESS = 1,
   LOGIN_FAILED = 100,
   EXISIT = 101,
-  NOT_EXISIT = 102
+  NOT_EXISIT = 102,
+  TOKEN_EXPIRED = 103
 }
 
 export const response = (code: ResponseCode, data?: any) => ({ code, msg: ResponseCode[code], data })
