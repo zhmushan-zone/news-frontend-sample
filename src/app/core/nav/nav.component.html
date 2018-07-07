@@ -10,7 +10,8 @@
 </mat-card>
 <mat-nav-list (click)="linkClick.emit(navMode.NAV)">
   <a *ngFor="let menu of menus"
-    mat-list-item>
+    mat-list-item
+    [routerLink]="menu.link">
     {{ menu.title }}
   </a>
   <a mat-list-item *ngIf="userService.user" (click)="logout()">注销</a>

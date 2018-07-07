@@ -30,7 +30,7 @@ export class NavComponent implements OnInit {
 
   menus: Menu[] = [
     {
-      link: 'index',
+      link: '/index',
       title: '主页'
     }
   ];
