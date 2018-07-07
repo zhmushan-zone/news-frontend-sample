@@ -74,4 +74,8 @@ export class UserController {
     }
     ctx.body = response(ResponseCode.TOKEN_EXPIRED)
   }
+
+  static logout(ctx: Context) {
+    ctx.body = success()
+  }
 }

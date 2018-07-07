@@ -8,6 +8,7 @@ export const validateToken = (token: string) => UserRepository.findByUsername(to
 
 export const validateTokenMiddleware = (ctx: Context, next) => {
   const { token } = ctx.headers
+
   const user = validateToken(token)
   ctx.state.user = user
   next()

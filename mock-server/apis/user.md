@@ -73,6 +73,25 @@ POST /api/user/register
   "msg": "EXISIT"
 }
 ```
+## Logout
+```
+GET /api/user/logout
+```
+
+headers
+```
+{
+  "token": "token"
+}
+```
+
+返回
+```
+{
+  "code": "1",
+  "msg": "SUCCESS"
+}
+```
 ## Auth
 ```
 GET /api/user/auth
