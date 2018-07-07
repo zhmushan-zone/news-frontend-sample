@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../models';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ConfirmDialogComponent, ConfirmDialogData } from '../confirm-dialog/confirm-dialog.component';
+import { Router } from '@angular/router';
 
 export interface Menu {
   link: string;
@@ -12,7 +13,7 @@ export interface Menu {
 export enum NavMode {
   NAV,
   LOGIN,
-  PERSONAL_CENTER
+  PERSONAL
 }
 
 @Component({
@@ -48,6 +49,7 @@ export class NavComponent implements OnInit {
           localStorage.removeItem('token');
           this.userService.user = null;
           this.snackBar.open('注销成功');
+          this.router.navigate(['/index']);
         });
       }
     });
@@ -56,7 +58,8 @@ export class NavComponent implements OnInit {
   constructor(
     public userService: UserService,
     public snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public router: Router
   ) {
   }
 
