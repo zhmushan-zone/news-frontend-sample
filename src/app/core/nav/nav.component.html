@@ -1,11 +1,17 @@
-<mat-card class="mat-elevation-z0">
-  <button mat-fab class="avatar" (click)="linkClick.emit(navMode.login)"></button>
-  <span class="hint">点击头像登录</span>
+<mat-card class="mat-elevation-z0" fxLayout="row" fxLayoutAlign="start center">
+  <button mat-fab class="avatar"
+  (click)="linkClick.emit(userService.user ? navMode.PERSONAL_CENTER : navMode.LOGIN)"
+  [style.background-image]="
+    userService.user
+      ? 'url(' + userService.user.avatarPath + ')'
+      : ''
+  "></button>
+  <span class="hint">{{ userService.user?.username || '点击头像登录' }}</span>
 </mat-card>
-<mat-nav-list>
+<mat-nav-list (click)="linkClick.emit(navMode.NAV)">
   <a *ngFor="let menu of menus"
-    mat-list-item
-    (click)="linkClick.emit(navMode.nav)">
+    mat-list-item>
     {{ menu.title }}
   </a>
+  <a mat-list-item *ngIf="userService.user" (click)="logout()">注销</a>
 </mat-nav-list>

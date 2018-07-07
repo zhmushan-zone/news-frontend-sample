@@ -33,6 +33,8 @@ export class LoginDialogComponent implements OnInit {
       switch (res.code) {
         case ResponseCode.SUCCESS:
           this.snackBar.open('登录成功', '确定');
+          localStorage.setItem('token', res.data.token);
+          this.dialogRef.close(res.data);
           break;
         case ResponseCode.LOGIN_FAILED:
           this.snackBar.open('用户名或密码错误', '确定');
@@ -47,6 +49,8 @@ export class LoginDialogComponent implements OnInit {
       switch (res.code) {
         case ResponseCode.SUCCESS:
           this.snackBar.open('注册成功', '确定');
+          localStorage.setItem('token', res.data.token);
+          this.dialogRef.close(res.data);
           break;
         case ResponseCode.EXISIT:
           this.snackBar.open('用户名已存在', '确定');

@@ -1,6 +1,6 @@
 <mat-card class="mat-elevation-z0">
   <mat-card-content>
-    <form class="login-form" [formGroup]="loginForm">
+    <form [formGroup]="loginForm" fxLayout="column">
       <mat-form-field>
         <input matInput formControlName="username" placeholder="用户名">
         <mat-error>请输入用户名!</mat-error>
@@ -11,7 +11,7 @@
       </mat-form-field>
     </form>
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions fxLayout="row" fxLayoutAlign="space-between start">
     <button mat-raised-button type="button" [disabled]="!loginForm.valid" (click)="login()">登录</button>
     <button mat-raised-button type="button" [disabled]="!loginForm.valid" (click)="register()">注册</button>
   </mat-card-actions>

@@ -5,7 +5,9 @@ import { SharedModule } from '../shared/shared.module';
 import { NavComponent } from './nav/nav.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../auth/auth.interceptor';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -17,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     ToolbarComponent,
     NavComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    ConfirmDialogComponent
   ],
   exports: [
     ToolbarComponent,
@@ -26,7 +29,11 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule
   ],
   entryComponents: [
-    LoginDialogComponent
+    LoginDialogComponent,
+    ConfirmDialogComponent
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ]
 })
 export class CoreModule { }
