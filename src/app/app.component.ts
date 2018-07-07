@@ -44,7 +44,7 @@ export class AppComponent {
       case NavMode.LOGIN:
         this.loginDialogOpen();
         break;
-      case NavMode.PERSONAL_CENTER:
+      case NavMode.PERSONAL:
         this.router.navigate(['personal']);
         break;
     }

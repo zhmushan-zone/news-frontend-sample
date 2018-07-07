@@ -1,13 +1,13 @@
 <div class="app-fullpage" fxLayout="column">
-	<app-toolbar (menuClick)="sidenav.toggle()"></app-toolbar>
-	<main fxLayout="column" fxFlex>
-		<mat-sidenav-container fxFlex>
-			<mat-sidenav #sidenav>
+  <app-toolbar (menuClick)="sidenav.toggle()"></app-toolbar>
+  <main fxLayout="column" fxFlex>
+    <mat-sidenav-container fxLayout="column" fxFlex>
+      <mat-sidenav #sidenav>
         <app-nav (linkClick)="sidenav.toggle(); navClicked($event)"></app-nav>
-			</mat-sidenav>
-			<div class="content">
-				<router-outlet></router-outlet>
-			</div>
+      </mat-sidenav>
+      <mat-sidenav-content fxLayout="column" fxFlex>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
     </mat-sidenav-container>
-	</main>
+  </main>
 </div>

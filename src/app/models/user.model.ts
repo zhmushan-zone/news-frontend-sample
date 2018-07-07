@@ -11,13 +11,13 @@ export interface User {
   token: string;
 }
 
-export const enum UserRole {
+export enum UserRole {
   SUPER,
   ADMIN,
   USER
 }
 
-export const enum UserSex {
+export enum UserSex {
   MALE,
   FEMALE
 }
