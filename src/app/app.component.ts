@@ -4,6 +4,7 @@ import { LoginDialogComponent } from './core/login-dialog/login-dialog.component
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ResponseCode } from './models';
 import { UserService } from './services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent {
   constructor(
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    public userService: UserService
+    public userService: UserService,
+    public router: Router
   ) {
     this.initial();
   }
@@ -41,6 +43,9 @@ export class AppComponent {
     switch (mode) {
       case NavMode.LOGIN:
         this.loginDialogOpen();
+        break;
+      case NavMode.PERSONAL_CENTER:
+        this.router.navigate(['personal']);
         break;
     }
   }
