@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavMode } from './core/nav/nav.component';
 import { LoginDialogComponent } from './core/login-dialog/login-dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { ResponseCode } from './models';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -11,18 +13,42 @@ import { MatDialog } from '@angular/material';
 export class AppComponent {
 
   constructor(
-    public dialog: MatDialog
-  ) { }
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar,
+    public userService: UserService
+  ) {
+    this.initial();
+  }
+
+  initial() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.userService.auth().subscribe(res => {
+        switch (res.code) {
+          case ResponseCode.SUCCESS:
+            localStorage.setItem('token', res.data.token);
+            this.userService.user = res.data;
+            break;
+          case ResponseCode.TOKEN_EXPIRED:
+            this.snackBar.open('Token已失效, 清重新登录');
+            break;
+        }
+      });
+    }
+  }
 
   navClicked(mode: NavMode) {
     switch (mode) {
-      case NavMode.login:
+      case NavMode.LOGIN:
         this.loginDialogOpen();
         break;
     }
   }
 
   loginDialogOpen() {
-    this.dialog.open(LoginDialogComponent);
+    const loginDialog = this.dialog.open(LoginDialogComponent);
+    loginDialog.afterClosed().subscribe(user => {
+      this.userService.user = user;
+    });
   }
 }

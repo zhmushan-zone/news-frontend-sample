@@ -12,7 +12,8 @@ import {
   MatFormFieldModule,
   MatSnackBarModule,
   MatInputModule,
-  MAT_SNACK_BAR_DEFAULT_OPTIONS
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MAT_DIALOG_DEFAULT_OPTIONS
 } from '@angular/material';
 
 @NgModule({
@@ -45,7 +46,16 @@ import {
     MatInputModule
   ],
   providers: [
-    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: {
+        hasBackdrop: true,
+        position: {
+          top: '16%'
+        }
+      }
+    }
   ]
 })
 export class SharedModule { }

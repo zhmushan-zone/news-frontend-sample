@@ -9,15 +9,27 @@ export class UserService {
 
   prefix = '/api/user';
 
+  private _user: User;
+  get user() { return this._user; }
+  set user(user: User) { this._user = user; }
+
   constructor(
-    public httpClient: HttpClient
+    public http: HttpClient
   ) { }
 
   login(user: User) {
-    return this.httpClient.post<Response<User>>(`${this.prefix}/login`, user);
+    return this.http.post<Response<User>>(`${this.prefix}/login`, user);
   }
 
   register(user: User) {
-    return this.httpClient.post<Response<User>>(`${this.prefix}/register`, user);
+    return this.http.post<Response<User>>(`${this.prefix}/register`, user);
+  }
+
+  auth() {
+    return this.http.get<Response<User>>(`${this.prefix}/auth`);
+  }
+
+  logout() {
+    return this.http.get<Response<null>>(`${this.prefix}/logout`);
   }
 }
