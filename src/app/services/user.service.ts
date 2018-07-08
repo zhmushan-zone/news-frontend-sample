@@ -32,4 +32,12 @@ export class UserService {
   logout() {
     return this.http.get<Response<null>>(`${this.prefix}/logout`);
   }
+
+  findAll() {
+    return this.http.get<Response<User[]>>(`${this.prefix}`);
+  }
+
+  del(id: string) {
+    return this.http.delete<Response<null>>(`${this.prefix}/${id}`);
+  }
 }
