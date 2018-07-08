@@ -10,6 +10,7 @@ import { AuthInterceptor } from '../auth/auth.interceptor';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { RouterModule } from '@angular/router';
 import { UserInfoDialogComponent } from './user-info-dialog/user-info-dialog.component';
+import { ChangePassDialogComponent } from './change-pass-dialog/change-pass-dialog.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { UserInfoDialogComponent } from './user-info-dialog/user-info-dialog.com
     LoginDialogComponent,
     ConfirmDialogComponent,
     UserInfoDialogComponent,
+    ChangePassDialogComponent,
   ],
   exports: [
     ToolbarComponent,
@@ -35,7 +37,8 @@ import { UserInfoDialogComponent } from './user-info-dialog/user-info-dialog.com
   entryComponents: [
     LoginDialogComponent,
     ConfirmDialogComponent,
-    UserInfoDialogComponent
+    UserInfoDialogComponent,
+    ChangePassDialogComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

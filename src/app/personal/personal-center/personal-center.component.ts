@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User, ResponseCode } from '../../models';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
+import { ChangePassDialogComponent } from '../../core/change-pass-dialog/change-pass-dialog.component';
 
 @Component({
   selector: 'app-personal-center',
@@ -28,9 +29,14 @@ export class PersonalCenterComponent implements OnInit {
     });
   }
 
+  changePass() {
+    const changePassDialog = this.dialog.open(ChangePassDialogComponent, { disableClose: true });
+  }
+
   constructor(
     public userService: UserService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {
     this.user = new User(userService.user);
   }

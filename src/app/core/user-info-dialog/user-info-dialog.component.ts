@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { UserSex, User } from '../../models';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { ChangePassDialogComponent } from '../change-pass-dialog/change-pass-dialog.component';
 
 @Component({
   selector: 'app-user-info-dialog',
@@ -11,8 +12,13 @@ export class UserInfoDialogComponent implements OnInit {
 
   userSex = UserSex;
 
+  changePass() {
+    const changePassDialog = this.dialog.open(ChangePassDialogComponent, { disableClose: true });
+  }
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public user: User
+    @Inject(MAT_DIALOG_DATA) public user: User,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
