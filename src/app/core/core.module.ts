@@ -22,17 +22,17 @@ import { RouterModule } from '@angular/router';
     ToolbarComponent,
     NavComponent,
     LoginDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
   ],
   exports: [
     ToolbarComponent,
     NavComponent,
     LoginDialogComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   entryComponents: [
     LoginDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
