@@ -231,6 +231,7 @@ headers
 参数
 ```
 {
+  "id": "id",
   "username": "username",
   "password": "password",
   "avatarPath": "avatarPath",

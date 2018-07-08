@@ -55,10 +55,22 @@ export class UserRegisterDTO extends User {
 }
 
 export class UserUpdateDTO extends User {
+  readonly id: string
+  readonly username: string
+  readonly password: string
   readonly avatarPath: string
+  role: UserRole
+  readonly sex: UserSex
+  readonly age: number
   constructor(user: User) {
     super()
+    this.id = user.id
+    this.username = user.username
+    this.password = user.password
     this.avatarPath = user.avatarPath
+    this.role = user.role
+    this.sex = user.sex
+    this.age = user.age
   }
 }
 

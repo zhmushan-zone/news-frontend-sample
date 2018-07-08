@@ -63,12 +63,20 @@ export class UserController {
     const userUpdateDTO = new UserUpdateDTO(ctx.request.body as User)
     const user = ctx.state.user as User
 
-    const newUser = UserRepository.updateById(user.id, userUpdateDTO)
-    if (newUser) {
-      ctx.body = success(new UserVO(newUser))
+    const targetUser = UserRepository.findById(userUpdateDTO.id)
+    if (user.id === userUpdateDTO.id || user.role < targetUser.role) {
+      if (user.role !== UserRole.SUPER) {
+        userUpdateDTO.role = targetUser.role
+      }
+      const newUser = UserRepository.updateById(userUpdateDTO.id, userUpdateDTO)
+      if (newUser) {
+        ctx.body = success(new UserVO(newUser))
+        return
+      }
+      ctx.body = response(ResponseCode.NOT_EXISIT)
       return
     }
-    ctx.body = response(ResponseCode.NOT_EXISIT)
+    ctx.body = response(ResponseCode.NO_PERMISSION)
   }
 
   static auth(ctx: Context) {
