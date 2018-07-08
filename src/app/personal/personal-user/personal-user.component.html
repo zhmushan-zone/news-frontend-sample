@@ -1,3 +1,47 @@
-<p>
-  personal-user works!
-</p>
+<div class="mat-elevation-z8 container">
+  <button mat-raised-button color="accent" [disabled]="!selection.selected.length" (click)="del()"> 删除 </button>
+  <button mat-raised-button color="primary" [disabled]="selection.selected.length!==1" (click)="edit()"> 编辑 </button>
+
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox [disabled]="!canSelected(row)" (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+          [checked]="selection.isSelected(row) && canSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> 用户名 </th>
+      <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef> 权限 </th>
+      <td mat-cell *matCellDef="let element"> {{userRole(element.role)}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="createAt">
+      <th mat-header-cell *matHeaderCellDef> 创建日期 </th>
+      <td mat-cell *matCellDef="let element"> {{element.createAt | date:'yyyy-MM-dd'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="updateAt">
+      <th mat-header-cell *matHeaderCellDef> 更新日期 </th>
+      <td mat-cell *matCellDef="let element"> {{element.updateAt | date:'yyyy-MM-dd'}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="canSelected(row) && selection.toggle(row)"></tr>
+  </table>
+</div>

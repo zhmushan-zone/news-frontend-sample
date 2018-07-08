@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 96%;
+  height: calc(100vh - 112px);
+  overflow: auto;
+  margin-top: 24px;
+}
+
+button {
+  margin: 16px 8px;
+}
+
+table {
+  width: 100%;
+}

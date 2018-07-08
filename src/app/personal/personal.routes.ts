@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'personal/center',
+        redirectTo: 'center',
         pathMatch: 'full'
       },
       {

@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
+import { UserService } from '../../services/user.service';
+import { ResponseCode, User, UserRole } from '../../models';
+import { Router } from '@angular/router';
+import { SelectionModel } from '@angular/cdk/collections';
+import { ConfirmDialogComponent, ConfirmDialogData } from '../../core/confirm-dialog/confirm-dialog.component';
+import { ProgressService } from '../../services/progress.service';
+import { UserInfoComponent } from '../../shared/user-info/user-info.component';
 
 @Component({
   selector: 'app-personal-user',
@@ -7,9 +15,95 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalUserComponent implements OnInit {
 
-  constructor() { }
+  users: User[] = [];
+  dataSource: MatTableDataSource<User>;
+  selection = new SelectionModel<User>(true, []);
+  displayedColumns: string[] = ['select', 'id', 'username', 'role', 'createAt', 'updateAt'];
 
-  ngOnInit() {
+  initial() {
+    this.userService.findAll().subscribe(res => {
+      switch (res.code) {
+        case ResponseCode.SUCCESS:
+          this.users = res.data;
+          this.dataSource = new MatTableDataSource<User>(this.users);
+          break;
+        case ResponseCode.NO_PERMISSION:
+          this.router.navigate(['/index']);
+          break;
+      }
+    });
   }
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.filter(row => this.canSelected(row)).length;
+    return numSelected === numRows;
+  }
+
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.canSelected(row) && this.selection.select(row));
+  }
+
+  canSelected(user: User) {
+    return this.userService.user.role < user.role;
+  }
+
+  del() {
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      data: <ConfirmDialogData>{
+        title: '删除',
+        content: `你确定要删除这 ${this.selection.selected.length} 名用户吗?`
+      }
+    });
+    confirmDialog.afterClosed().subscribe(async res => {
+      if (res) {
+        this.progressService.isShow = true;
+        for (const u of this.selection.selected) {
+          await this.userService.del(u.id).subscribe(resp => {
+            switch (resp.code) {
+              case ResponseCode.SUCCESS:
+                this.users.splice(this.users.findIndex(v => v.id === u.id), 1);
+                this.dataSource.data = [...this.users];
+                this.selection.deselect(u);
+            }
+          });
+          await new Promise(resolve => setTimeout(resolve, 100)); // 增加等待时间, 留下优化空间.
+        }
+        this.progressService.isShow = false;
+      }
+    });
+  }
+
+  edit() {
+    const userInfoDialog = this.dialog.open(UserInfoComponent);
+  }
+
+  userRole(role: UserRole) {
+    let roleStr = '普通用户';
+    switch (role) {
+      case UserRole.USER:
+        break;
+      case UserRole.ADMIN:
+        roleStr = '管理员';
+        break;
+      case UserRole.SUPER:
+        roleStr = '超级管理员';
+        break;
+    }
+    return roleStr;
+  }
+
+  constructor(
+    public userService: UserService,
+    public router: Router,
+    public dialog: MatDialog,
+    public progressService: ProgressService
+  ) {
+    this.initial();
+  }
+
+  ngOnInit() { }
 
 }
