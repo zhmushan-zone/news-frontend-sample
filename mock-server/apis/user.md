@@ -264,3 +264,9 @@ headers
   "msg": "NOT_EXISIT"
 }
 ```
+```
+{
+  "code": 104,
+  "msg": "NO_PERMISSION"
+}
+```
