@@ -6,7 +6,9 @@
     "avatarPath": "/images/1.jpeg",
     "role": 1,
     "sex": 0,
-    "age": 0
+    "age": 0,
+    "createAt": "2018-07-08T02:55:57.984Z",
+    "updateAt": "2018-07-08T02:55:57.984Z"
   },
   {
     "id": "user2",
@@ -15,7 +17,9 @@
     "avatarPath": "/images/2.png",
     "role": 2,
     "sex": 0,
-    "age": 0
+    "age": 0,
+    "createAt": "2018-07-08T02:55:57.984Z",
+    "updateAt": "2018-07-08T02:55:57.984Z"
   },
   {
     "id": "user3",
@@ -24,6 +28,63 @@
     "avatarPath": "/images/2.png",
     "role": 0,
     "sex": 0,
-    "age": 0
+    "age": 0,
+    "createAt": "2018-07-08T02:55:57.984Z",
+    "updateAt": "2018-07-08T02:55:57.984Z"
+  },
+  {
+    "id": "user4",
+    "username": "user4",
+    "password": "user4",
+    "avatarPath": "/images/2.png",
+    "role": 0,
+    "sex": 0,
+    "age": 0,
+    "createAt": "2018-07-08T02:55:57.984Z",
+    "updateAt": "2018-07-08T02:55:57.984Z"
+  },
+  {
+    "id": "user5",
+    "username": "user5",
+    "password": "user5",
+    "avatarPath": "/images/2.png",
+    "role": 0,
+    "sex": 0,
+    "age": 0,
+    "createAt": "2018-07-08T02:55:57.984Z",
+    "updateAt": "2018-07-08T02:55:57.984Z"
+  },
+  {
+    "id": "user6",
+    "username": "user6",
+    "password": "user6",
+    "avatarPath": "/images/2.png",
+    "role": 0,
+    "sex": 0,
+    "age": 0,
+    "createAt": "2018-07-08T02:55:57.984Z",
+    "updateAt": "2018-07-08T02:55:57.984Z"
+  },
+  {
+    "id": "user7",
+    "username": "user7",
+    "password": "user7",
+    "avatarPath": "/images/2.png",
+    "role": 0,
+    "sex": 0,
+    "age": 0,
+    "createAt": "2018-07-08T02:55:57.984Z",
+    "updateAt": "2018-07-08T02:55:57.984Z"
+  },
+  {
+    "id": "user8",
+    "username": "user8",
+    "password": "user8",
+    "avatarPath": "/images/2.png",
+    "role": 0,
+    "sex": 0,
+    "age": 0,
+    "createAt": "2018-07-08T02:55:57.984Z",
+    "updateAt": "2018-07-08T02:55:57.984Z"
   }
 ]
