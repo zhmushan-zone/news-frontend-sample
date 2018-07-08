@@ -1,3 +1,17 @@
-<p>
-  user-info works!
-</p>
+<button mat-fab class="avatar" [style.background-image]="user ? 'url(' + user.avatarPath + ')' : ''"></button>
+<mat-radio-group [(ngModel)]="user.sex">
+  <mat-radio-button [value]="userSex.MALE">男</mat-radio-button>
+  <mat-radio-button [value]="userSex.FEMALE">女</mat-radio-button>
+</mat-radio-group>
+<mat-form-field>
+  <input placeholder="用户名" matInput type="text" [(ngModel)]="user.username" disabled #usernameIpt/>
+  <button matSuffix mat-icon-button (click)="usernameIpt.disabled = !usernameIpt.disabled">
+    <mat-icon>{{ usernameIpt.disabled ? 'mode_edit' : 'done' }}</mat-icon>
+  </button>
+</mat-form-field>
+<mat-form-field>
+  <input placeholder="年龄" matInput type="text" [(ngModel)]="user.age" disabled #ageIpt/>
+  <button matSuffix mat-icon-button (click)="ageIpt.disabled = !ageIpt.disabled">
+    <mat-icon>{{ ageIpt.disabled ? 'mode_edit' : 'done' }}</mat-icon>
+  </button>
+</mat-form-field>

@@ -9,6 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../auth/auth.interceptor';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { RouterModule } from '@angular/router';
+import { UserInfoDialogComponent } from './user-info-dialog/user-info-dialog.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { RouterModule } from '@angular/router';
     NavComponent,
     LoginDialogComponent,
     ConfirmDialogComponent,
+    UserInfoDialogComponent,
   ],
   exports: [
     ToolbarComponent,
@@ -33,6 +35,7 @@ import { RouterModule } from '@angular/router';
   entryComponents: [
     LoginDialogComponent,
     ConfirmDialogComponent,
+    UserInfoDialogComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

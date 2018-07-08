@@ -17,16 +17,17 @@ import {
   MatTableModule,
   MatPaginatorModule,
   MatCheckboxModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatMenuModule
 } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
-  declarations: [
-    UserInfoComponent
-  ],
   imports: [
     CommonModule,
+    FormsModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -41,11 +42,14 @@ import { UserInfoComponent } from './user-info/user-info.component';
     MatTableModule,
     MatPaginatorModule,
     MatCheckboxModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatMenuModule
   ],
   exports: [
     UserInfoComponent,
     CommonModule,
+    FormsModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -60,7 +64,9 @@ import { UserInfoComponent } from './user-info/user-info.component';
     MatTableModule,
     MatPaginatorModule,
     MatCheckboxModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatMenuModule
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
@@ -74,8 +80,6 @@ import { UserInfoComponent } from './user-info/user-info.component';
       }
     }
   ],
-  entryComponents: [
-    UserInfoComponent
-  ]
+  declarations: [UserInfoComponent]
 })
 export class SharedModule { }

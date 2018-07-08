@@ -40,4 +40,8 @@ export class UserService {
   del(id: string) {
     return this.http.delete<Response<null>>(`${this.prefix}/${id}`);
   }
+
+  update(user: User) {
+    return this.http.put<Response<User>>(`${this.prefix}`, user);
+  }
 }
