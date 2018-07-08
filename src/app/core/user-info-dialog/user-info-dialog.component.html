@@ -1,0 +1,11 @@
+<app-user-info [user]="user"></app-user-info>
+<div class="action" fxLayout="row" fxLayoutAlign="space-between center">
+  <button mat-raised-button [mat-dialog-close]="true">保存</button>
+  <button mat-raised-button mat-dialog-close>取消</button>
+</div>
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item>修改密码</button>
+</mat-menu>
+<button mat-icon-button [matMenuTriggerFor]="appMenu" class="menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
