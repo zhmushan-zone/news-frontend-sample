@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatDialog, MatSnackBar } from '@angular/material';
 import { UserService } from '../../services/user.service';
 import { ResponseCode, User, UserRole } from '../../models';
 import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ConfirmDialogComponent, ConfirmDialogData } from '../../core/confirm-dialog/confirm-dialog.component';
 import { ProgressService } from '../../services/progress.service';
-import { UserInfoComponent } from '../../shared/user-info/user-info.component';
+import { UserInfoDialogComponent } from '../../core/user-info-dialog/user-info-dialog.component';
 
 @Component({
   selector: 'app-personal-user',
@@ -77,7 +77,25 @@ export class PersonalUserComponent implements OnInit {
   }
 
   edit() {
-    const userInfoDialog = this.dialog.open(UserInfoComponent);
+    const user = this.selection.selected[0];
+    const userInfoDialog = this.dialog.open(UserInfoDialogComponent, {
+      data: user,
+      disableClose: true
+    });
+    userInfoDialog.afterClosed().subscribe(res => {
+      if (res) {
+        this.userService.update(user).subscribe(resp => {
+          switch (resp.code) {
+            case ResponseCode.SUCCESS:
+              this.users.splice(this.users.findIndex(u => u.id === user.id), 1, user);
+              this.dataSource.data = [...this.users];
+              break;
+            case ResponseCode.NOT_EXISIT:
+              this.snackBar.open('用户不存在');
+          }
+        });
+      }
+    });
   }
 
   userRole(role: UserRole) {
@@ -99,7 +117,8 @@ export class PersonalUserComponent implements OnInit {
     public userService: UserService,
     public router: Router,
     public dialog: MatDialog,
-    public progressService: ProgressService
+    public progressService: ProgressService,
+    public snackBar: MatSnackBar
   ) {
     this.initial();
   }
