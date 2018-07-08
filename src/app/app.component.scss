@@ -2,6 +2,10 @@
   min-height: 100vh;
 }
 
-header {
+.filter {
+  filter: blur(4px);
+}
+
+app-toolbar {
   z-index: 2;
 }

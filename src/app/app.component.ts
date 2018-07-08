@@ -5,6 +5,7 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 import { ResponseCode } from './models';
 import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
+import { ProgressService } from './services/progress.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ export class AppComponent {
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     public userService: UserService,
-    public router: Router
+    public router: Router,
+    public progressService: ProgressService
   ) {
     this.initial();
   }
@@ -33,6 +35,8 @@ export class AppComponent {
             break;
           case ResponseCode.TOKEN_EXPIRED:
             this.snackBar.open('Token已失效, 清重新登录');
+            this.router.navigate(['/index']);
+            localStorage.removeItem('token');
             break;
         }
       });
