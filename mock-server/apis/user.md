@@ -14,7 +14,7 @@ POST /api/user/login
 返回
 ```
 {
-  "code": "1",
+  "code": 1,
   "msg": "SUCCESS",
   "data": {
     "id": "id",
@@ -52,7 +52,7 @@ POST /api/user/register
 返回
 ```
 {
-  "code": "1",
+  "code": 1,
   "msg": "SUCCESS",
   "data": {
     "id": "id",
@@ -88,7 +88,7 @@ headers
 返回
 ```
 {
-  "code": "1",
+  "code": 1,
   "msg": "SUCCESS"
 }
 ```
@@ -107,7 +107,7 @@ headers
 返回
 ```
 {
-  "code": "1",
+  "code": 1,
   "msg": "SUCCESS",
   "data": {
     "id": "id",
@@ -136,7 +136,7 @@ GET /api/user/:id
 返回
 ```
 {
-  "code": "1",
+  "code": 1,
   "msg": "SUCCESS",
   "data": {
     "id": "id",
@@ -161,10 +161,17 @@ GET /api/user/:id
 GET /api/user
 ```
 
+headers
+```
+{
+  "token": "token"
+}
+```
+
 返回
 ```
 {
-  "code": "1",
+  "code": 1,
   "msg": "SUCCESS",
   "data": [{
     "id": "id",
@@ -176,6 +183,12 @@ GET /api/user
     "updateAt": Date,
     "createAt": Date
   }]
+}
+```
+```
+{
+  "code": 104,
+  "msg": "NO_PERMISSION"
 }
 ```
 ## Delete
@@ -193,7 +206,7 @@ headers
 返回
 ```
 {
-  "code": "1",
+  "code": 1,
   "msg": "SUCCESS"
 }
 ```
@@ -230,7 +243,7 @@ headers
 返回
 ```
 {
-  "code": "1",
+  "code": 1,
   "msg": "SUCCESS",
   "data": {
     "id": "id",

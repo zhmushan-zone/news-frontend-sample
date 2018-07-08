@@ -9,6 +9,6 @@ userRouter
   .get('/auth', validateTokenMiddleware, UserController.auth)
   .get('/logout', UserController.logout)
   .get('/:id', UserController.findById)
-  .get('/', UserController.findAll)
+  .get('/', validateTokenMiddleware, UserController.findAll)
   .del('/:id', validateTokenMiddleware, UserController.delete)
   .put('/', validateTokenMiddleware, UserController.update)

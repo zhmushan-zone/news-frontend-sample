@@ -39,7 +39,13 @@ export class UserController {
   }
 
   static findAll(ctx: Context) {
-    ctx.body = success(UserRepository.find().map(user => new UserVO(user)))
+    const user = ctx.state.user as User
+
+    if (user.role === UserRole.ADMIN || user.role === UserRole.SUPER) {
+      ctx.body = success(UserRepository.find().map(u => new UserVO(u)))
+      return
+    }
+    ctx.body = response(ResponseCode.NO_PERMISSION)
   }
 
   static delete(ctx: Context) {
