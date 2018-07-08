@@ -13,10 +13,18 @@ import {
   MatSnackBarModule,
   MatInputModule,
   MAT_SNACK_BAR_DEFAULT_OPTIONS,
-  MAT_DIALOG_DEFAULT_OPTIONS
+  MAT_DIALOG_DEFAULT_OPTIONS,
+  MatTableModule,
+  MatPaginatorModule,
+  MatCheckboxModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
+  declarations: [
+    UserInfoComponent
+  ],
   imports: [
     CommonModule,
     FlexLayoutModule,
@@ -29,9 +37,14 @@ import {
     MatDialogModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ],
   exports: [
+    UserInfoComponent,
     CommonModule,
     FlexLayoutModule,
     MatToolbarModule,
@@ -43,7 +56,11 @@ import {
     MatDialogModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
@@ -56,6 +73,9 @@ import {
         }
       }
     }
+  ],
+  entryComponents: [
+    UserInfoComponent
   ]
 })
 export class SharedModule { }
