@@ -92,9 +92,15 @@ export class PersonalUserComponent implements OnInit {
               this.dataSource.data = [...this.users];
               this.selection.clear();
               this.selection.select(resp.data);
+              localStorage.setItem('token', resp.data.token);
+              this.snackBar.open('修改成功');
               break;
             case ResponseCode.NOT_EXISIT:
               this.snackBar.open('用户不存在');
+              break;
+            case ResponseCode.NO_PERMISSION:
+              this.snackBar.open('权限不足');
+              break;
           }
         });
         await new Promise(resolve => setTimeout(resolve, 500)); // 增加等待时间, 留下优化空间.

@@ -255,6 +255,7 @@ headers
     "age": 0,
     "updateAt": Date,
     "createAt": Date,
+    "token": "token"
   }
 }
 ```

@@ -71,7 +71,7 @@ export class UserController {
       }
       const newUser = UserRepository.updateById(userUpdateDTO.id, userUpdateDTO)
       if (newUser) {
-        ctx.body = success(new UserVO(newUser))
+        ctx.body = success(new UserVO(newUser, createToken(newUser)))
         return
       }
       ctx.body = response(ResponseCode.NOT_EXISIT)
