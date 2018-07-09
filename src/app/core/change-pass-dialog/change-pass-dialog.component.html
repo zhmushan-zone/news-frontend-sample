@@ -1,3 +1,10 @@
-<p>
-  change-pass-dialog works!
-</p>
+<mat-form-field>
+  <input placeholder="密码" matInput type="password" [(ngModel)]="password" disabled #passwordIpt/>
+  <button matSuffix mat-icon-button (click)="passwordIpt.disabled = !passwordIpt.disabled">
+    <mat-icon>{{ passwordIpt.disabled ? 'mode_edit' : 'done' }}</mat-icon>
+  </button>
+</mat-form-field>
+<div class="action" fxLayout="row" fxLayoutAlign="space-between center">
+  <button mat-raised-button [mat-dialog-close]="password">确定</button>
+  <button mat-raised-button mat-dialog-close>取消</button>
+</div>

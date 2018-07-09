@@ -38,6 +38,7 @@
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "arrow-parens": false,
-    "max-classes-per-file": false
+    "max-classes-per-file": false,
+    "no-unused-expression": false
   }
 }

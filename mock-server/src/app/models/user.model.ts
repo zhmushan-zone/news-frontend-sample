@@ -64,13 +64,13 @@ export class UserUpdateDTO extends User {
   readonly age: number
   constructor(user: User) {
     super()
-    this.id = user.id
-    this.username = user.username
-    this.password = user.password
-    this.avatarPath = user.avatarPath
-    this.role = user.role
-    this.sex = user.sex
-    this.age = user.age
+    user.id && (this.id = user.id)
+    user.username && (this.username = user.username)
+    user.password && (this.password = user.password)
+    user.avatarPath && (this.avatarPath = user.avatarPath)
+    user.role && (this.role = user.role)
+    user.sex && (this.sex = user.sex)
+    user.age && (this.age = user.age)
   }
 }
 

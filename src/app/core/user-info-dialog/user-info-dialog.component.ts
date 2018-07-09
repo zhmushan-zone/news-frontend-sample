@@ -14,6 +14,7 @@ export class UserInfoDialogComponent implements OnInit {
 
   changePass() {
     const changePassDialog = this.dialog.open(ChangePassDialogComponent, { disableClose: true });
+    changePassDialog.afterClosed().subscribe(pass => pass && (this.user.password = pass));
   }
 
   constructor(

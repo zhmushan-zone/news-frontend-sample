@@ -69,7 +69,7 @@ export class PersonalUserComponent implements OnInit {
                 this.selection.deselect(u);
             }
           });
-          await new Promise(resolve => setTimeout(resolve, 100)); // 增加等待时间, 留下优化空间.
+          await new Promise(resolve => setTimeout(resolve, 500)); // 增加等待时间, 留下优化空间.
         }
         this.progressService.isShow = false;
       }
@@ -79,21 +79,26 @@ export class PersonalUserComponent implements OnInit {
   edit() {
     const user = this.selection.selected[0];
     const userInfoDialog = this.dialog.open(UserInfoDialogComponent, {
-      data: user,
+      data: new User(user),
       disableClose: true
     });
-    userInfoDialog.afterClosed().subscribe(res => {
+    userInfoDialog.afterClosed().subscribe(async (res: User) => {
       if (res) {
-        this.userService.update(user).subscribe(resp => {
+        this.progressService.isShow = true;
+        await this.userService.update(res).subscribe(resp => {
           switch (resp.code) {
             case ResponseCode.SUCCESS:
-              this.users.splice(this.users.findIndex(u => u.id === user.id), 1, user);
+              this.users.splice(this.users.findIndex(u => u.id === resp.data.id), 1, resp.data);
               this.dataSource.data = [...this.users];
+              this.selection.clear();
+              this.selection.select(resp.data);
               break;
             case ResponseCode.NOT_EXISIT:
               this.snackBar.open('用户不存在');
           }
         });
+        await new Promise(resolve => setTimeout(resolve, 500)); // 增加等待时间, 留下优化空间.
+        this.progressService.isShow = false;
       }
     });
   }
