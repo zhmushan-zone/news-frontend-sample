@@ -28,7 +28,7 @@ export class PersonalUserComponent implements OnInit {
           this.dataSource = new MatTableDataSource<User>(this.users);
           break;
         case ResponseCode.NO_PERMISSION:
-          this.router.navigate(['/index']);
+          this.router.navigate(['/news']);
           break;
       }
     });

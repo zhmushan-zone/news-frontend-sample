@@ -31,7 +31,7 @@ export class NavComponent implements OnInit {
 
   menus: Menu[] = [
     {
-      link: '/index',
+      link: '/news',
       title: '主页'
     }
   ];
@@ -49,7 +49,7 @@ export class NavComponent implements OnInit {
           localStorage.removeItem('token');
           this.userService.user = null;
           this.snackBar.open('注销成功');
-          this.router.navigate(['/index']);
+          this.router.navigate(['/news']);
         });
       }
     });

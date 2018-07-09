@@ -1,15 +1,20 @@
+:host {
+  position: relative;
+}
+
 :host ::ng-deep .mat-card-header-text {
   margin: 0;
 }
 
 .container {
-  margin-top: 8px;
+  margin: 8px;
 }
 
 mat-card {
   box-sizing: border-box;
   width: 100%;
   padding: 16px 20px;
+  cursor: pointer;
 
   mat-card-title {
     font-weight: bold;
@@ -37,4 +42,9 @@ mat-card {
     color: #cccccc;
     font-size: 12px;
   }
+}
+
+app-news-details {
+  position: absolute;
+  top: 0;
 }

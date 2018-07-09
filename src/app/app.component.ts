@@ -35,7 +35,7 @@ export class AppComponent {
             break;
           case ResponseCode.TOKEN_EXPIRED:
             this.snackBar.open('Token已失效, 清重新登录');
-            this.router.navigate(['/index']);
+            this.router.navigate(['/news']);
             localStorage.removeItem('token');
             break;
         }

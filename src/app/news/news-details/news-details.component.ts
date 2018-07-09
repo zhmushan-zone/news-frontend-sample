@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { News, ResponseCode } from '../../models';
+import { ActivatedRoute, Router } from '@angular/router';
+import { News, ResponseCode, User } from '../../models';
 import { NewsService } from '../../services/news.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-news-details',
@@ -12,23 +12,38 @@ import { NewsService } from '../../services/news.service';
 export class NewsDetailsComponent implements OnInit {
 
   news: News;
+  author: User;
 
-  constructor(
-    public activatedRoute: ActivatedRoute,
-    public newsService: NewsService
-  ) { }
-
-  ngOnInit() {
+  async initial() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.newsService.findById(id).subscribe(res => {
+    const newsResp = await this.newsService.findById(id).toPromise();
+    switch (newsResp.code) {
+      case ResponseCode.SUCCESS:
+        this.news = newsResp.data;
+        break;
+      case ResponseCode.NOT_EXISIT:
+        break;
+    }
+    this.userService.findById(this.news.authorId).subscribe(res => {
       switch (res.code) {
         case ResponseCode.SUCCESS:
-          this.news = res.data;
+          this.author = res.data;
           break;
         case ResponseCode.NOT_EXISIT:
           break;
       }
     });
+  }
+
+  constructor(
+    public activatedRoute: ActivatedRoute,
+    public newsService: NewsService,
+    public userService: UserService,
+    public router: Router
+  ) { }
+
+  ngOnInit() {
+    this.initial();
   }
 
 }

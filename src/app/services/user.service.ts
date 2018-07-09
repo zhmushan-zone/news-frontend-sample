@@ -44,4 +44,8 @@ export class UserService {
   update(user: User) {
     return this.http.put<Response<User>>(`${this.prefix}`, user);
   }
+
+  findById(id: string) {
+    return this.http.get<Response<User>>(`${this.prefix}/${id}`);
+  }
 }

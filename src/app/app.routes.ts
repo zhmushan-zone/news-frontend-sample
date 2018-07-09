@@ -6,11 +6,11 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'index'
+    redirectTo: 'news'
   },
   {
-    path: 'index',
-    loadChildren: './index/index.module#IndexModule'
+    path: 'news',
+    loadChildren: './news/news.module#NewsModule'
   },
   {
     path: 'personal',
