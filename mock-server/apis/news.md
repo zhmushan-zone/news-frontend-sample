@@ -12,7 +12,7 @@ GET /api/news/:id
     "id": "id",
     "title": "title",
     "content": "content",
-    "tags": ["html", "css"],
+    "tags": [0, 1],
     "authorId": "authorId"
   }
 }
@@ -38,9 +38,15 @@ GET /api/news/tags/:tags
     "id": "id",
     "title": "title",
     "content": "content",
-    "tags": ["html", "css"],
+    "tags": [0, 1],
     "authorId": "authorId"
   }]
+}
+```
+```
+{
+  "code": 102,
+  "msg": "NOT_EXISIT"
 }
 ```
 ---
@@ -58,7 +64,7 @@ GET /api/news
     "id": "id",
     "title": "title",
     "content": "content",
-    "tags": ["html", "css"],
+    "tags": [0, 1],
     "authorId": "authorId"
   }]
 }
@@ -81,7 +87,7 @@ headers
 {
   "title": "title",
   "content": "content",
-  "tags": ["html", "css"]
+  "tags": [0, 1]
 }
 ```
 
@@ -94,7 +100,7 @@ headers
     "id": "id",
     "title": "title",
     "content": "content",
-    "tags": ["html", "css"],
+    "tags": [0, 1],
     "authorId": "authorId"
   }]
 }
@@ -118,7 +124,7 @@ headers
   "id": "id",
   "title": "title",
   "content": "content",
-  "tags": ["html", "css"]
+  "tags": [0, 1]
 }
 ```
 
@@ -131,7 +137,7 @@ headers
     "id": "id",
     "title": "title",
     "content": "content",
-    "tags": ["html", "css"],
+    "tags": [0, 1],
     "authorId": "authorId"
   }]
 }
