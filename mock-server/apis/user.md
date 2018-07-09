@@ -73,6 +73,7 @@ POST /api/user/register
   "msg": "EXISIT"
 }
 ```
+---
 ## Logout
 ```
 GET /api/user/logout
@@ -92,6 +93,7 @@ headers
   "msg": "SUCCESS"
 }
 ```
+---
 ## Auth
 ```
 GET /api/user/auth
@@ -128,6 +130,7 @@ headers
   "msg": "TOKEN_EXPIRED"
 }
 ```
+---
 ## FindById
 ```
 GET /api/user/:id
@@ -156,6 +159,7 @@ GET /api/user/:id
   "msg": "NOT_EXISIT"
 }
 ```
+---
 ## FindAll
 ```
 GET /api/user
@@ -191,6 +195,7 @@ headers
   "msg": "NO_PERMISSION"
 }
 ```
+---
 ## Delete
 ```
 DELETE /api/user/:id
@@ -216,6 +221,7 @@ headers
   "msg": "NOT_EXISIT"
 }
 ```
+---
 ## Update
 ```
 PUT /api/user
