@@ -51,8 +51,9 @@ export class UserController {
   static delete(ctx: Context) {
     const { id } = ctx.params
     const user = ctx.state.user as User
+    const targetUser = UserRepository.findById(id)
 
-    if (user.role === UserRole.ADMIN && UserRepository.deleteById(id)) {
+    if (user.role < targetUser.role && UserRepository.deleteById(id)) {
       ctx.body = success()
       return
     }

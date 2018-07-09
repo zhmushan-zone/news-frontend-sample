@@ -47,7 +47,7 @@ export class PersonalUserComponent implements OnInit {
   }
 
   canSelected(user: User) {
-    return this.userService.user.role < user.role;
+    return this.userService.user && this.userService.user.role < user.role;
   }
 
   del() {
