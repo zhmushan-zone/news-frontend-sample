@@ -1,5 +1,5 @@
 import { Context } from 'koa'
-import { NewsRepository } from '../repositories'
+import { NewsService } from '../services'
 import { success, response, ResponseCode } from '../utils'
 import { NewsVO } from '../models'
 
@@ -8,7 +8,7 @@ export class NewsController {
   static findOne(ctx: Context) {
     const { id } = ctx.params
 
-    const news = NewsRepository.findById(id)
+    const news = NewsService.findById(id)
     if (news) {
       ctx.body = success(news)
       return
@@ -17,7 +17,7 @@ export class NewsController {
   }
 
   static findAll(ctx: Context) {
-    const newses = NewsRepository.find()
+    const newses = NewsService.find()
 
     ctx.body = success(newses.map(n => new NewsVO(n)))
   }

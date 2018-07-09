@@ -1,13 +1,13 @@
 import { Context } from 'koa'
 import { User, UserLoginDTO, UserRegisterDTO, UserVO, UserUpdateDTO, UserRole } from '../models'
 import { success, response, ResponseCode, createToken } from '../utils'
-import { UserRepository } from '../repositories'
+import { UserService } from '../services'
 
 export class UserController {
 
   static login(ctx: Context) {
     const userLoginDTO = new UserLoginDTO(ctx.request.body as User)
-    const user = UserRepository.findByUsernameAndPassword(userLoginDTO.username, userLoginDTO.password)
+    const user = UserService.findByUsernameAndPassword(userLoginDTO.username, userLoginDTO.password)
     if (user) {
       ctx.body = success(new UserVO(user, createToken(user)))
       return
@@ -18,12 +18,12 @@ export class UserController {
   static register(ctx: Context) {
     const userRegisterDTO = new UserRegisterDTO(ctx.request.body as User)
 
-    const user = UserRepository.findByUsername(userRegisterDTO.username)
+    const user = UserService.findByUsername(userRegisterDTO.username)
     if (!user) {
       userRegisterDTO.id = userRegisterDTO.username
       userRegisterDTO.createAt = new Date()
       userRegisterDTO.updateAt = new Date()
-      UserRepository.save(userRegisterDTO)
+      UserService.save(userRegisterDTO)
       ctx.body = success(new UserVO(userRegisterDTO, createToken(userRegisterDTO)))
       return
     }
@@ -33,7 +33,7 @@ export class UserController {
   static findById(ctx: Context) {
     const { id } = ctx.params
 
-    const user = UserRepository.findById(id)
+    const user = UserService.findById(id)
     if (user) {
       ctx.body = success(new UserVO(user))
       return
@@ -45,7 +45,7 @@ export class UserController {
     const user = ctx.state.user as User
 
     if (user.role === UserRole.ADMIN || user.role === UserRole.SUPER) {
-      ctx.body = success(UserRepository.find().map(u => new UserVO(u)))
+      ctx.body = success(UserService.find().map(u => new UserVO(u)))
       return
     }
     ctx.body = response(ResponseCode.NO_PERMISSION)
@@ -54,9 +54,9 @@ export class UserController {
   static delete(ctx: Context) {
     const { id } = ctx.params
     const user = ctx.state.user as User
-    const targetUser = UserRepository.findById(id)
+    const targetUser = UserService.findById(id)
 
-    if (user.role < targetUser.role && UserRepository.deleteById(id)) {
+    if (user.role < targetUser.role && UserService.deleteById(id)) {
       ctx.body = success()
       return
     }
@@ -67,12 +67,12 @@ export class UserController {
     const userUpdateDTO = new UserUpdateDTO(ctx.request.body as User)
     const user = ctx.state.user as User
 
-    const targetUser = UserRepository.findById(userUpdateDTO.id)
+    const targetUser = UserService.findById(userUpdateDTO.id)
     if (user.id === userUpdateDTO.id || user.role < targetUser.role) {
       if (user.role !== UserRole.SUPER) {
         userUpdateDTO.role = targetUser.role
       }
-      const newUser = UserRepository.updateById(userUpdateDTO.id, userUpdateDTO)
+      const newUser = UserService.updateById(userUpdateDTO.id, userUpdateDTO)
       if (newUser) {
         ctx.body = success(new UserVO(newUser, createToken(newUser)))
         return

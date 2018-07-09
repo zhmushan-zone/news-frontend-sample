@@ -2,7 +2,7 @@ import newsData = require('../../../data/news.json')
 import { News } from '../models'
 const newses: News[] = newsData
 
-export class NewsRepository {
+export class NewsService {
 
   static find() {
     return newses || []

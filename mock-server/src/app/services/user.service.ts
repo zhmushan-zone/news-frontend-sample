@@ -2,7 +2,7 @@ import { User } from '../models'
 import usersData = require('../../../data/users.json')
 const users: User[] = usersData
 
-export class UserRepository {
+export class UserService {
 
   static find() {
     return users || []
