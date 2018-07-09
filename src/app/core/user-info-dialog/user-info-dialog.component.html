@@ -5,6 +5,7 @@
 </div>
 <mat-menu #appMenu="matMenu">
   <button mat-menu-item (click)="changePass()">修改密码</button>
+  <button mat-menu-item *ngIf="userService.user.role===0" (click)="changeRole()">修改权限</button>
 </mat-menu>
 <button mat-icon-button [matMenuTriggerFor]="appMenu" class="menu">
   <mat-icon>more_vert</mat-icon>

@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-select [(ngModel)]="role">
+    <mat-option *ngFor="let r of roles" [value]="r.value">
+      {{r.text}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<div class="action" fxLayout="row" fxLayoutAlign="space-between center">
+  <button mat-raised-button [mat-dialog-close]="role">确定</button>
+  <button mat-raised-button mat-dialog-close>取消</button>
+</div>

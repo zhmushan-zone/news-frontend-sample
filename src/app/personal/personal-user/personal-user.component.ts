@@ -7,6 +7,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { ConfirmDialogComponent, ConfirmDialogData } from '../../core/confirm-dialog/confirm-dialog.component';
 import { ProgressService } from '../../services/progress.service';
 import { UserInfoDialogComponent } from '../../core/user-info-dialog/user-info-dialog.component';
+import { CreateUserDialogComponent } from '../../core/create-user-dialog/create-user-dialog.component';
 
 @Component({
   selector: 'app-personal-user',
@@ -92,7 +93,6 @@ export class PersonalUserComponent implements OnInit {
               this.dataSource.data = [...this.users];
               this.selection.clear();
               this.selection.select(resp.data);
-              localStorage.setItem('token', resp.data.token);
               this.snackBar.open('修改成功');
               break;
             case ResponseCode.NOT_EXISIT:
@@ -105,6 +105,16 @@ export class PersonalUserComponent implements OnInit {
         });
         await new Promise(resolve => setTimeout(resolve, 500)); // 增加等待时间, 留下优化空间.
         this.progressService.isShow = false;
+      }
+    });
+  }
+
+  create() {
+    const createUserDialog = this.dialog.open(CreateUserDialogComponent);
+    createUserDialog.afterClosed().subscribe(u => {
+      if (u) {
+        this.users.push(u);
+        this.dataSource.data = [...this.users];
       }
     });
   }

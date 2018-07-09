@@ -19,7 +19,8 @@ import {
   MatCheckboxModule,
   MatProgressSpinnerModule,
   MatRadioModule,
-  MatMenuModule
+  MatMenuModule,
+  MatSelectModule
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { UserInfoComponent } from './user-info/user-info.component';
@@ -44,7 +45,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatRadioModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
   ],
   exports: [
     UserInfoComponent,
@@ -66,7 +68,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatRadioModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },

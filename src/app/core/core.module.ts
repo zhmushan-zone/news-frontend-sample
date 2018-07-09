@@ -11,6 +11,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { RouterModule } from '@angular/router';
 import { UserInfoDialogComponent } from './user-info-dialog/user-info-dialog.component';
 import { ChangePassDialogComponent } from './change-pass-dialog/change-pass-dialog.component';
+import { CreateUserDialogComponent } from './create-user-dialog/create-user-dialog.component';
+import { ChangeRoleDialogComponent } from './change-role-dialog/change-role-dialog.component';
 
 @NgModule({
   imports: [
@@ -27,6 +29,8 @@ import { ChangePassDialogComponent } from './change-pass-dialog/change-pass-dial
     ConfirmDialogComponent,
     UserInfoDialogComponent,
     ChangePassDialogComponent,
+    CreateUserDialogComponent,
+    ChangeRoleDialogComponent,
   ],
   exports: [
     ToolbarComponent,
@@ -38,7 +42,9 @@ import { ChangePassDialogComponent } from './change-pass-dialog/change-pass-dial
     LoginDialogComponent,
     ConfirmDialogComponent,
     UserInfoDialogComponent,
-    ChangePassDialogComponent
+    ChangePassDialogComponent,
+    CreateUserDialogComponent,
+    ChangeRoleDialogComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
