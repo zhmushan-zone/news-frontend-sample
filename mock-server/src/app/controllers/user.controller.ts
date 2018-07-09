@@ -20,6 +20,9 @@ export class UserController {
 
     const user = UserRepository.findByUsername(userRegisterDTO.username)
     if (!user) {
+      userRegisterDTO.id = userRegisterDTO.username
+      userRegisterDTO.createAt = new Date()
+      userRegisterDTO.updateAt = new Date()
       UserRepository.save(userRegisterDTO)
       ctx.body = success(new UserVO(userRegisterDTO, createToken(userRegisterDTO)))
       return
