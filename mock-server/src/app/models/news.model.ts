@@ -3,6 +3,7 @@ export class News {
   title: string
   content: string
   tags: NewsTag[]
+  authorId: string
 }
 
 export enum NewsTag {}
