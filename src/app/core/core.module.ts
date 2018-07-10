@@ -14,7 +14,6 @@ import { ChangePassDialogComponent } from './change-pass-dialog/change-pass-dial
 import { CreateUserDialogComponent } from './create-user-dialog/create-user-dialog.component';
 import { ChangeRoleDialogComponent } from './change-role-dialog/change-role-dialog.component';
 import { NewsInfoDialogComponent } from './news-info-dialog/news-info-dialog.component';
-import { CreateNewsDialogComponent } from './create-news-dialog/create-news-dialog.component';
 
 @NgModule({
   imports: [
@@ -34,7 +33,6 @@ import { CreateNewsDialogComponent } from './create-news-dialog/create-news-dial
     CreateUserDialogComponent,
     ChangeRoleDialogComponent,
     NewsInfoDialogComponent,
-    CreateNewsDialogComponent,
   ],
   exports: [
     ToolbarComponent,
@@ -49,7 +47,6 @@ import { CreateNewsDialogComponent } from './create-news-dialog/create-news-dial
     ChangePassDialogComponent,
     CreateUserDialogComponent,
     ChangeRoleDialogComponent,
-    CreateNewsDialogComponent,
     NewsInfoDialogComponent
   ],
   providers: [

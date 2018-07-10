@@ -7,7 +7,6 @@ import { UserService } from '../../services/user.service';
 import { ConfirmDialogComponent, ConfirmDialogData } from '../../core/confirm-dialog/confirm-dialog.component';
 import { ProgressService } from '../../services/progress.service';
 import { NewsInfoDialogComponent } from '../../core/news-info-dialog/news-info-dialog.component';
-import { CreateNewsDialogComponent } from '../../core/create-news-dialog/create-news-dialog.component';
 
 @Component({
   selector: 'app-personal-news',
