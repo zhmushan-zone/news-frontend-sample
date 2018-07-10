@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../services/news.service';
-import { News, ResponseCode } from '../models';
+import { News, ResponseCode, NewsTag } from '../models';
 
 @Component({
   selector: 'app-news',
@@ -10,6 +10,9 @@ import { News, ResponseCode } from '../models';
 export class NewsComponent implements OnInit {
 
   newses: News[] = [];
+  canShow(tags: NewsTag[]) {
+    return !(new Set([...this.newsService.tagLimit, ...tags]).size === (this.newsService.tagLimit.length + tags.length));
+  }
 
   constructor(
     public newsService: NewsService

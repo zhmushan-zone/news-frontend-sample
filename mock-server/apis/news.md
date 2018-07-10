@@ -24,26 +24,6 @@ GET /api/news/:id
 }
 ```
 ---
-## FindByTag
-```
-GET /api/news/tag/:tag
-```
-
-返回
-```
-{
-  "code": 1,
-  "msg": "SUCCESS",
-  "data": [{
-    "id": "id",
-    "title": "title",
-    "content": "content",
-    "tags": [0, 1],
-    "authorId": "authorId"
-  }]
-}
-```
----
 ## FindAll
 ```
 GET /api/news

@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NewsTag } from '../../models';
+import { NewsService } from '../../services/news.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -10,9 +12,19 @@ export class ToolbarComponent implements OnInit {
   @Output()
   menuClick = new EventEmitter();
 
-  constructor() { }
+  newsTag = NewsTag;
 
-  ngOnInit() {
+  getTags() {
+    return Object.keys(NewsTag).filter(k => isNaN(Number(k)));
   }
 
+  constructor(
+    public newsService: NewsService
+  ) { }
+
+  ngOnInit() {
+    for (const k of this.getTags()) {
+      this.newsService.tagLimit.push(NewsTag[k]);
+    }
+  }
 }

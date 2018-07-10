@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { News, Response } from '../models';
+import { News, Response, NewsTag } from '../models';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -12,6 +12,10 @@ export class NewsService {
   private _news: News;
   get news() { return this._news; }
   set news(news: News) { this._news = news; }
+
+  private _tagLimit: NewsTag[] = [];
+  get tagLimit() { return this._tagLimit; }
+  set tagLimit(tags: NewsTag[]) { this._tagLimit = tags; }
 
   constructor(
     public http: HttpClient

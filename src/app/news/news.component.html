@@ -1,5 +1,5 @@
-<div class="container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="12px">
-  <mat-card *ngFor="let news of newses" [routerLink]="news.id">
+<div *ngFor="let news of newses" class="container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="12px">
+  <mat-card [routerLink]="news.id" *ngIf="canShow(news.tags)">
     <mat-card-header>
       <mat-card-title>{{news.title}}</mat-card-title>
     </mat-card-header>
