@@ -24,9 +24,9 @@ GET /api/news/:id
 }
 ```
 ---
-## FindByTags
+## FindByTag
 ```
-GET /api/news/tags/:tags
+GET /api/news/tag/:tag
 ```
 
 返回
@@ -41,12 +41,6 @@ GET /api/news/tags/:tags
     "tags": [0, 1],
     "authorId": "authorId"
   }]
-}
-```
-```
-{
-  "code": 102,
-  "msg": "NOT_EXISIT"
 }
 ```
 ---
@@ -127,7 +121,18 @@ headers
   "tags": [0, 1]
 }
 ```
-
+```
+{
+  "code": 102,
+  "msg": "NOT_EXISIT"
+}
+```
+```
+{
+  "code": 104,
+  "msg": "NO_PERMISSION"
+}
+```
 返回
 ```
 {

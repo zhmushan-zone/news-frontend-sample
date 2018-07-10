@@ -1,5 +1,5 @@
 import newsData = require('../../../data/news.json')
-import { News } from '../models'
+import { News, NewsTag } from '../models'
 const newses: News[] = newsData
 
 export class NewsService {
@@ -44,5 +44,9 @@ export class NewsService {
       }
     }
     return
+  }
+
+  static findByTag(tag: number) {
+    return newses.filter(n => (n.tags.length - new Set([...n.tags, tag]).size) === 0)
   }
 }
