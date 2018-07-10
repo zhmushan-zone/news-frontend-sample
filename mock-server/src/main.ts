@@ -1,7 +1,7 @@
 import * as koa from 'koa'
 import * as koaBodyparser from 'koa-bodyparser'
 import * as koaStatic from 'koa-static'
-import { router } from 'app/routes'
+import { router } from './app/routes'
 import * as path from 'path'
 
 const app = new koa()
