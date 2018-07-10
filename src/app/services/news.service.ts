@@ -24,4 +24,16 @@ export class NewsService {
   findAll() {
     return this.http.get<Response<News[]>>(`${this.prefix}`);
   }
+
+  update(news: News) {
+    return this.http.put<Response<News>>(`${this.prefix}`, news);
+  }
+
+  del(id: string) {
+    return this.http.delete<Response<null>>(`${this.prefix}/${id}`);
+  }
+
+  create(news: News) {
+    return this.http.post<Response<News>>(`${this.prefix}`, news);
+  }
 }

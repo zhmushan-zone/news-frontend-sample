@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatDialog, MatSnackBar } from '@angular/material';
-import { News, ResponseCode, UserRole } from '../../models';
+import { News, ResponseCode, UserRole, NewsTag } from '../../models';
 import { SelectionModel } from '@angular/cdk/collections';
 import { NewsService } from '../../services/news.service';
 import { UserService } from '../../services/user.service';
@@ -52,19 +52,19 @@ export class PersonalNewsComponent implements OnInit {
     const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
       data: <ConfirmDialogData>{
         title: '删除',
-        content: `你确定要删除这 ${this.selection.selected.length} 名用户吗?`
+        content: `你确定要删除这 ${this.selection.selected.length} 篇新闻吗?`
       }
     });
     confirmDialog.afterClosed().subscribe(async res => {
       if (res) {
         this.progressService.isShow = true;
-        for (const u of this.selection.selected) {
-          await this.userService.del(u.id).subscribe(resp => {
+        for (const n of this.selection.selected) {
+          await this.newsService.del(n.id).subscribe(resp => {
             switch (resp.code) {
               case ResponseCode.SUCCESS:
-                this.newses.splice(this.newses.findIndex(v => v.id === u.id), 1);
+                this.newses.splice(this.newses.findIndex(v => v.id === n.id), 1);
                 this.dataSource.data = [...this.newses];
-                this.selection.deselect(u);
+                this.selection.deselect(n);
             }
           });
           await new Promise(resolve => setTimeout(resolve, 500)); // 增加等待时间, 留下优化空间.
@@ -78,12 +78,13 @@ export class PersonalNewsComponent implements OnInit {
     const news = this.selection.selected[0];
     const userInfoDialog = this.dialog.open(NewsInfoDialogComponent, {
       data: new News(news),
-      disableClose: true
+      disableClose: true,
+      width: '80%',
     });
     userInfoDialog.afterClosed().subscribe(async (res: News) => {
       if (res) {
         this.progressService.isShow = true;
-        await this.newsService.update(news).subscribe(resp => {
+        this.newsService.update(res).subscribe(resp => {
           switch (resp.code) {
             case ResponseCode.SUCCESS:
               this.newses.splice(this.newses.findIndex(n => n.id === resp.data.id), 1, resp.data);
@@ -107,13 +108,24 @@ export class PersonalNewsComponent implements OnInit {
   }
 
   create() {
-    const createUserDialog = this.dialog.open(CreateNewsDialogComponent);
+    const createUserDialog = this.dialog.open(NewsInfoDialogComponent, { disableClose: true, data: new News({} as News) });
     createUserDialog.afterClosed().subscribe(n => {
       if (n) {
-        this.newses.push(n);
-        this.dataSource.data = [...this.newses];
+        this.newsService.create(n).subscribe(res => {
+          switch (res.code) {
+            case ResponseCode.SUCCESS:
+              this.newses.push(res.data);
+              this.dataSource.data = [...this.newses];
+              this.snackBar.open('创建成功', '确定');
+              break;
+          }
+        });
       }
     });
+  }
+
+  newsTags(tags: NewsTag[]) {
+    return tags.map(t => NewsTag[t]);
   }
 
   constructor(

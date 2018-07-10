@@ -13,6 +13,8 @@ import { UserInfoDialogComponent } from './user-info-dialog/user-info-dialog.com
 import { ChangePassDialogComponent } from './change-pass-dialog/change-pass-dialog.component';
 import { CreateUserDialogComponent } from './create-user-dialog/create-user-dialog.component';
 import { ChangeRoleDialogComponent } from './change-role-dialog/change-role-dialog.component';
+import { NewsInfoDialogComponent } from './news-info-dialog/news-info-dialog.component';
+import { CreateNewsDialogComponent } from './create-news-dialog/create-news-dialog.component';
 
 @NgModule({
   imports: [
@@ -31,6 +33,8 @@ import { ChangeRoleDialogComponent } from './change-role-dialog/change-role-dial
     ChangePassDialogComponent,
     CreateUserDialogComponent,
     ChangeRoleDialogComponent,
+    NewsInfoDialogComponent,
+    CreateNewsDialogComponent,
   ],
   exports: [
     ToolbarComponent,
@@ -44,7 +48,9 @@ import { ChangeRoleDialogComponent } from './change-role-dialog/change-role-dial
     UserInfoDialogComponent,
     ChangePassDialogComponent,
     CreateUserDialogComponent,
-    ChangeRoleDialogComponent
+    ChangeRoleDialogComponent,
+    CreateNewsDialogComponent,
+    NewsInfoDialogComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

@@ -1,0 +1,22 @@
+<mat-form-field>
+  <mat-select placeholder="标签" multiple [(ngModel)]="news.tags">
+    <mat-option *ngFor="let tag of tags" [value]="tag.value">{{tag.text}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field>
+  <input placeholder="标题" matInput type="text" [(ngModel)]="news.title" disabled #titleIpt/>
+  <button matSuffix mat-icon-button (click)="titleIpt.disabled = !titleIpt.disabled">
+    <mat-icon>{{ titleIpt.disabled ? 'mode_edit' : 'done' }}</mat-icon>
+  </button>
+</mat-form-field>
+<mat-form-field>
+  <textarea matInput placeholder="内容" [(ngModel)]="news.content" disabled #contentIpt>
+  </textarea>
+  <button matSuffix mat-icon-button (click)="contentIpt.disabled = !contentIpt.disabled">
+    <mat-icon>{{ contentIpt.disabled ? 'mode_edit' : 'done' }}</mat-icon>
+  </button>
+</mat-form-field>
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="12px">
+  <button mat-raised-button [mat-dialog-close]="news">确定</button>
+  <button mat-raised-button mat-dialog-close>取消</button>
+</div>
