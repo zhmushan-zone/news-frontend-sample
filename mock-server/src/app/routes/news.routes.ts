@@ -9,4 +9,4 @@ newsRouter
   .get('/', NewsController.findAll)
   .post('/', validateTokenMiddleware, NewsController.create)
   .put('/', validateTokenMiddleware, NewsController.update)
-  .del('/:id', NewsController.delete)
+  .del('/:id', validateTokenMiddleware, NewsController.delete)
