@@ -101,18 +101,6 @@ headers
   "tags": [0, 1]
 }
 ```
-```
-{
-  "code": 102,
-  "msg": "NOT_EXISIT"
-}
-```
-```
-{
-  "code": 104,
-  "msg": "NO_PERMISSION"
-}
-```
 返回
 ```
 {
@@ -131,6 +119,12 @@ headers
 {
   "code": 102,
   "msg": "NOT_EXISIT"
+}
+```
+```
+{
+  "code": 104,
+  "msg": "NO_PERMISSION"
 }
 ```
 ---
