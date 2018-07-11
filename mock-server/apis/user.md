@@ -260,8 +260,7 @@ headers
     "sex": 0,
     "age": 0,
     "updateAt": Date,
-    "createAt": Date,
-    "token": "token"
+    "createAt": Date
   }
 }
 ```
@@ -275,5 +274,11 @@ headers
 {
   "code": 104,
   "msg": "NO_PERMISSION"
+}
+```
+```
+{
+  "code": 101,
+  "msg": "EXISIT"
 }
 ```
