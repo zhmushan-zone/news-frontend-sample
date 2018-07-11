@@ -243,7 +243,8 @@ headers
   "avatarPath": "avatarPath",
   "role": 0,
   "sex": 0,
-  "age": 0
+  "age": 0,
+  "token": "token"
 }
 ```
 
