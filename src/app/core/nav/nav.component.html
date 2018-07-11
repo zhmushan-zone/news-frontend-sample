@@ -2,7 +2,7 @@
   <button mat-fab class="avatar"
   (click)="linkClick.emit(userService.user ? navMode.PERSONAL : navMode.LOGIN)"
   [style.background-image]="
-    userService.user
+    userService.user?.avatarPath
       ? 'url(' + userService.user.avatarPath + ')'
       : ''
   "></button>

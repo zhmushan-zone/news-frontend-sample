@@ -25,8 +25,8 @@ export class PersonalCenterComponent implements OnInit {
         case ResponseCode.NO_PERMISSION:
           this.snackBar.open('权限不足');
           break;
-        case ResponseCode.NOT_EXISIT:
-          this.snackBar.open('用户不存在');
+        case ResponseCode.EXISIT:
+          this.snackBar.open('用户已存在');
           break;
       }
     });

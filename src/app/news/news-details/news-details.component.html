@@ -1,6 +1,6 @@
 <div class="author-info mat-elevation-z2" xLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
   <button mat-mini-fab class="avatar"
-    [style.background-image]="author ? 'url(' + author.avatarPath + ')' : ''"></button>
+    [style.background-image]="author?.avatarPath ? 'url(' + author.avatarPath + ')' : ''"></button>
   <span class="hint">{{ author?.username }}</span>
 </div>
 <div class="content">
