@@ -1,8 +1,10 @@
 <mat-toolbar fxLayoutAlign="space-between center">
-  <button mat-icon-button (click)="menuClick.emit()">
-    <mat-icon>menu</mat-icon>
-  </button>
-
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <button mat-icon-button (click)="menuClick.emit()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>新闻网站</span>
+  </div>
   <mat-form-field>
     <mat-select multiple [(ngModel)]="newsService.tagLimit">
       <mat-option *ngFor="let tag of getTags()" [value]="newsTag[tag]" >{{tag}}</mat-option>
